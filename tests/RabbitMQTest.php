@@ -14,5 +14,7 @@ class RabbitMQTest extends TestCase
     public function testIsDefined()
     {
         $this->assertInstanceOf(RabbitMQ::class, new RabbitMQ());
+        RabbitMQ::shouldReceive('get')->once()->andReturn('rabbitmq');
+        RabbitMQ::get();
     }
 }

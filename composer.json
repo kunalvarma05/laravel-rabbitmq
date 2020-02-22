@@ -39,7 +39,7 @@
   },
   "scripts": {
     "test": "vendor/bin/phpunit",
-    "test-ci": "phpunit -v --coverage-text --colors=never --stderr",
+    "test-ci": "phpunit -vvvv --coverage-text --coverage-clover=coverage.clover --colors=never --stderr",
     "lint": "phpcs -n",
     "lint-fix": "php-cs-fixer fix && phpcbf"
   },
@@ -50,7 +50,10 @@
     "laravel": {
       "providers": [
         "Kunnu\\RabbitMQ\\RabbitMQServiceProvider"
-      ]
+      ],
+      "aliases": {
+        "RabbitMQ": "Kunnu\\RabbitMQ\\RabbitMQ"
+      }
     }
   }
 }
