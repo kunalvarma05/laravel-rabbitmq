@@ -21,7 +21,7 @@ An easy-to-use Laravel package for working with RabbitMQ.
 
 ## Requirements
 
-- PHP 7.4+
+- PHP 7.2+
 - Laravel 5.5+
 
 ## Installation
