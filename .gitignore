@@ -1,0 +1,17 @@
+_ide_helper.php
+!.vscode/extensions.json
+.env
+.php_cs
+.php_cs.cache
+.phpstorm.meta.php
+.phpunit.result.cache
+.vscode/*
+*.clover
+*.DS_Store
+build
+composer.lock
+coverage
+node_modules
+npm-debug.log
+vendor
+yarn-error.log
