@@ -1,7 +1,5 @@
 <?php
 
-use Kunnu\RabbitMQ\RabbitMQManager;
-
 return [
     // Default connection (a key from 'connections')
     'defaultConnection' => env('RABBITMQ_CONNECTION', 'rabbitmq'),
