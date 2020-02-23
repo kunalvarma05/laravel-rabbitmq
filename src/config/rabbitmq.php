@@ -17,7 +17,7 @@ return [
             'ssl_options' => [],
             'ssl_protocol' => 'ssl',
             'connect_options' => [],
-        ]
+        ],
     ],
     'channel_id' => null,
 

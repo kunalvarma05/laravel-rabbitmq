@@ -37,7 +37,7 @@ abstract class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageAliases($app)
     {
         return [
-            'RabbitMQ' => RabbitMQ::class
+            'RabbitMQ' => RabbitMQ::class,
         ];
     }
 }

@@ -8,5 +8,5 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{md,js,ts,json}]
+[*.{md,js,ts,json,yml}]
 indent_size = 2
