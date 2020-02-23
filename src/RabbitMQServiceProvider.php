@@ -16,7 +16,7 @@ class RabbitMQServiceProvider extends ServiceProvider
     {
         // A single instance per request is enough
         $this->app->singleton(RabbitMQManager::class, function (Application $app) {
-            return new RabbitMQManager();
+            return new RabbitMQManager($app);
         });
 
         // Create a substitute binding
