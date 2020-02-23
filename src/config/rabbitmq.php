@@ -13,7 +13,7 @@ return [
             'password' => env('RABBITMQ_PASSWORD', ''),
             'vhost' => env('RABBITMQ_VHOST', '/'),
             'ssl_options' => [],
-            'ssl_protocol' => 'ssl',
+            'ssl_protocol' => null,
             'connect_options' => [],
         ],
     ],
