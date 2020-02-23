@@ -4,15 +4,8 @@ namespace Kunnu\RabbitMQ;
 
 use Illuminate\Support\Collection;
 
-class ConnectionConfig
+class ConnectionConfig extends Collection
 {
-    /**
-     * Configuration.
-     *
-     * @var Collection $config
-     */
-    protected Collection $config;
-
     /**
      * Create a new ConnectionConfig instance.
      *
@@ -20,7 +13,7 @@ class ConnectionConfig
      */
     public function __construct(array $config = null)
     {
-        $this->config = new Collection($config);
+        parent::__construct($config);
     }
 
     /**
@@ -30,7 +23,7 @@ class ConnectionConfig
      */
     public function getHost(): ?string
     {
-        return $this->config->get('host', '127.0.0.1');
+        return $this->get('host', '127.0.0.1');
     }
 
     /**
@@ -40,7 +33,7 @@ class ConnectionConfig
      */
     public function getPort(): ?int
     {
-        return $this->config->get('port', 5672);
+        return $this->get('port', 5672);
     }
 
     /**
@@ -50,7 +43,7 @@ class ConnectionConfig
      */
     public function getUser(): ?string
     {
-        return $this->config->get('username', '');
+        return $this->get('username', '');
     }
 
     /**
@@ -60,7 +53,7 @@ class ConnectionConfig
      */
     public function getPassword(): ?string
     {
-        return $this->config->get('password', '');
+        return $this->get('password', '');
     }
 
     /**
@@ -70,7 +63,7 @@ class ConnectionConfig
      */
     public function getVhost(): ?string
     {
-        return $this->config->get('vhost', '/');
+        return $this->get('vhost', '/');
     }
 
     /**
@@ -80,7 +73,7 @@ class ConnectionConfig
      */
     public function getSSLOptions(): ?array
     {
-        return $this->config->get('ssl_options', []);
+        return $this->get('ssl_options', []);
     }
 
     /**
@@ -90,7 +83,7 @@ class ConnectionConfig
      */
     public function getOptions(): ?array
     {
-        return $this->config->get('options', []);
+        return $this->get('options', []);
     }
 
     /**
@@ -100,6 +93,6 @@ class ConnectionConfig
      */
     public function getSSLProtocol(): ?string
     {
-        return $this->config->get('ssl_protocol', 'ssl');
+        return $this->get('ssl_protocol', 'ssl');
     }
 }

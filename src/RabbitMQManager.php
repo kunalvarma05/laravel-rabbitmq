@@ -4,6 +4,7 @@ namespace Kunnu\RabbitMQ;
 
 use Illuminate\Config\Repository;
 use Illuminate\Support\Collection;
+use PhpAmqpLib\Channel\AbstractChannel;
 use PhpAmqpLib\Connection\AMQPSSLConnection;
 use Illuminate\Contracts\Container\Container;
 use PhpAmqpLib\Connection\AbstractConnection;
@@ -39,6 +40,13 @@ class RabbitMQManager
     protected Collection $connections;
 
     /**
+     * Channel pool.
+     *
+     * @var Collection $channels
+     */
+    protected Collection $channels;
+
+    /**
      * Create a new RabbitMQManager instance.
      *
      * @param Container $app
@@ -48,6 +56,58 @@ class RabbitMQManager
         $this->app = $app;
         $this->config = $this->app->get('config');
         $this->connections = new Collection([]);
+        $this->channels = new Collection([]);
+    }
+
+    /**
+     * Get Connections.
+     *
+     * @return Collection
+     */
+    public function getConnections(): Collection
+    {
+        return $this->connections;
+    }
+
+    /**
+     * Get Config.
+     *
+     * @return Repository
+     */
+    public function getConfig(): Repository
+    {
+        return $this->config;
+    }
+
+    /**
+     * Get Application Container.
+     *
+     * @return Container
+     */
+    public function getApp(): Container
+    {
+        return $this->app;
+    }
+
+    /**
+     * Get Channels.
+     *
+     * @return Collection
+     */
+    public function getChannels(): Collection
+    {
+        return $this->channels;
+    }
+
+    /**
+     * Resolve default connection name.
+     *
+     * @return string|null
+     */
+    public function resolveDefaultConfigName(): ?string
+    {
+        $configKey = self::CONFIG_KEY;
+        return $this->config->get("{$configKey}.defaultConnection");
     }
 
     /**
@@ -84,6 +144,54 @@ class RabbitMQManager
     }
 
     /**
+     * Get the publisher.
+     *
+     * @return RabbitMQPublisher
+     */
+    public function publisher(): RabbitMQPublisher
+    {
+        return new RabbitMQPublisher($this);
+    }
+
+    /**
+     * Resolve the channel ID.
+     *
+     * @param string|null $channelId
+     * @param string|null $connectionName
+     * @return string|null
+     */
+    public function resolveChannelId(?string $channelId, ?string $connectionName): ?string
+    {
+        $configKey = self::CONFIG_KEY;
+        return $channelId ?? $this->config->get("{$configKey}.defaults.channel_id", $channelId);
+    }
+
+    /**
+     * Resolve channel for the given connection.
+     *
+     * @param string|null $connectionName
+     * @param string|null $channelId
+     * @param AbstractConnection|null $connection
+     *
+     * @return AbstractChannel|null
+     */
+    public function resolveChannel(
+        ?string $connectionName = null,
+        ?string $channelId = null,
+        ?AbstractConnection $connection = null
+    ): AbstractChannel {
+        if (!$connection) {
+            $connection = $this->resolveConnection($connectionName);
+        }
+
+        if (!$this->channels->has("{$connectionName}.{$channelId}")) {
+            $this->channels->put("{$connectionName}.{$channelId}", $connection->channel($channelId));
+        }
+
+        return $this->channels->get("{$connectionName}.{$channelId}");
+    }
+
+    /**
      * Create a new connection.
      *
      * @param ConnectionConfig $config
@@ -102,16 +210,5 @@ class RabbitMQManager
             $config->getOptions(),
             $config->getSSLProtocol(),
         );
-    }
-
-    /**
-     * Resolve default connection name.
-     *
-     * @return string|null
-     */
-    protected function resolveDefaultConfigName(): ?string
-    {
-        $configKey = self::CONFIG_KEY;
-        return $this->config->get("{$configKey}.defaultConnection");
     }
 }
