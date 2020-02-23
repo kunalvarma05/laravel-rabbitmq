@@ -1,24 +1,29 @@
 language: php
 
 php:
-    - 7.4
+  - 7.4
 
 services:
-    - rabbitmq-server
+  - rabbitmq-server
+
+addons:
+  apt:
+    packages:
+      - rabbitmq-server
 
 env:
-    matrix:
-        - COMPOSER_FLAGS="--prefer-lowest"
-        - COMPOSER_FLAGS=""
+  matrix:
+    - COMPOSER_FLAGS="--prefer-lowest"
+    - COMPOSER_FLAGS=""
 
 before_script:
-    - travis_retry composer self-update
-    - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
+  - travis_retry composer self-update
+  - travis_retry composer update ${COMPOSER_FLAGS} --no-interaction --prefer-source
 
 script:
-    - composer run-script test-ci
+  - composer run-script test-ci
 
 after_script:
-    - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
-    - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar && chmod +x php-coveralls.phar
-    - travis_retry php php-coveralls.phar -vvv -x coverage.clover -o ./coverall.json
+  - php vendor/bin/ocular code-coverage:upload --format=php-clover coverage.clover
+  - wget https://github.com/php-coveralls/php-coveralls/releases/download/v2.2.0/php-coveralls.phar && chmod +x php-coveralls.phar
+  - travis_retry php php-coveralls.phar -vvv -x coverage.clover -o ./coverall.json
