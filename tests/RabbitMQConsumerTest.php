@@ -134,11 +134,11 @@ class RabbitMQConsumerTest extends TestCase
         $this->assertInstanceOf(RabbitMQConsumer::class, $consumer);
 
         $exchange = new RabbitMQExchange(
-            'sample_exchange_2',
+            'fanout_exchange',
             [
                 'durable' => true,
                 'declare' => true,
-                'type' => AMQPExchangeType::DIRECT,
+                'type' => AMQPExchangeType::FANOUT,
             ]
         );
         // $queue = new RabbitMQQueue('my_queue', ['declare' => true, 'durable' => true]);
