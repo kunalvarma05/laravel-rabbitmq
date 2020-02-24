@@ -2,10 +2,12 @@
 
 namespace Kunnu\RabbitMQ;
 
-class RabbitMQ
+use Illuminate\Support\Facades\Facade;
+
+class RabbitMQ extends Facade
 {
-    public function __construct()
+    protected static function getFacadeAccessor()
     {
-        // TODO
+        return 'rabbitmq';
     }
 }
