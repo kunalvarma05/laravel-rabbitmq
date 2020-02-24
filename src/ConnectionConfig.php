@@ -29,7 +29,7 @@ class ConnectionConfig extends Collection
     /**
      * Get connection port.
      *
-     * @return integer|null
+     * @return int|null
      */
     public function getPort(): ?int
     {

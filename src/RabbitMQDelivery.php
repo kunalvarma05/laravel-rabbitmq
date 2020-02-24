@@ -25,7 +25,7 @@ class RabbitMQDelivery
     /**
      * @param array $config
      *
-     * @return \Anik\Amqp\Delivery
+     * @return RabbitMQDelivery
      */
     public function setConfig(array $config): self
     {
@@ -39,7 +39,6 @@ class RabbitMQDelivery
      *
      * @throws RabbitMQException
      * @return bool
-     *
      */
     public function acknowledge(): bool
     {
@@ -50,7 +49,7 @@ class RabbitMQDelivery
          */
         $channel = $info['channel'] ?? null;
 
-        if (!$channel) {
+        if (! $channel) {
             throw new RabbitMQException('Delivery info or channel is not set');
         }
 
@@ -74,7 +73,6 @@ class RabbitMQDelivery
      *
      * @throws RabbitMQException
      * @return bool
-     *
      */
     public function reject($requeue = false): bool
     {
@@ -85,7 +83,7 @@ class RabbitMQDelivery
          */
         $channel = $info['channel'] ?? null;
 
-        if (!$channel) {
+        if (! $channel) {
             throw new RabbitMQException('Delivery info or channel is not set');
         }
 

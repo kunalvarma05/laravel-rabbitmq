@@ -9,7 +9,7 @@ class PublishConfig extends Collection
     /**
      * Connection Configuration.
      *
-     * @var ConnectionConfig|null $connectionConfig
+     * @var ConnectionConfig|null
      */
     protected ?ConnectionConfig $connectionConfig;
 

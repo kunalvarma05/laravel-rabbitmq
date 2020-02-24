@@ -11,7 +11,7 @@ class RabbitMQConsumer
     /**
      * RabbitMQ Manager.
      *
-     * @var RabbitMQManager $manager
+     * @var RabbitMQManager
      */
     protected RabbitMQManager $manager;
 
@@ -32,12 +32,12 @@ class RabbitMQConsumer
         ConsumeConfig $consumeConfig = null
     ): void {
         $consumeConfig = $consumeConfig ?? new ConsumeConfig();
-        $defaultConfig = new Collection($this->manager->getConfig()->get(RabbitMQManager::CONFIG_KEY . ".defaults"));
+        $defaultConfig = new Collection($this->manager->getConfig()->get(RabbitMQManager::CONFIG_KEY . '.defaults'));
 
         $connectionName = $connectionName ?? $this->manager->resolveDefaultConfigName();
         $connection = $this->manager->resolveConnection();
 
-        $channelId = $this->manager->resolveChannelId($consumeConfig->get("channel_id"), $connectionName);
+        $channelId = $this->manager->resolveChannelId($consumeConfig->get('channel_id'), $connectionName);
         $channel = $this->manager->resolveChannel($connectionName, $channelId, $connection);
 
         $connectionConfig = $this->manager->resolveConfig($connectionName);
@@ -164,7 +164,7 @@ class RabbitMQConsumer
                 $exchangeConfig->get('auto_delete', false),
                 $exchangeConfig->get('internal', false),
                 $exchangeConfig->get('nowait', false),
-                new AMQPTable($exchangeConfig->get('properties', []))
+                (new AMQPTable($exchangeConfig->get('properties', [])))->getNativeData()
             );
         }
 
@@ -173,10 +173,10 @@ class RabbitMQConsumer
 
         if (empty($queueConfig->get('name')) || $queueConfig->get('declare')) {
             if (empty($queueConfig->get('name')) && empty($queue->getName())) {
-                $qp['nowait'] = false;
+                $queueConfig->put('nowait', false);
             }
 
-            list($queueName, $messageCount, $consumerCount) = $channel->queue_declare(
+            [$queueName, $messageCount, $consumerCount] = $channel->queue_declare(
                 $queue->getName(),
                 $queueConfig->get('passive', false),
                 $queueConfig->get('durable', true),
@@ -204,7 +204,7 @@ class RabbitMQConsumer
                 $exchange->getName(),
                 $bindingKey,
                 $queueConfig->get('nowait', false),
-                new AMQPTable($queueConfig->get('properties.bind_properties', []))
+                (new AMQPTable($queueConfig->get('properties.bind_properties', [])))->getNativeData()
             );
         }
 
