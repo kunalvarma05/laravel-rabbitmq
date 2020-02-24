@@ -2,6 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/kunalvarma05/laravel-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/kunalvarma05/laravel-rabbitmq)
 ![Travis (.com)](https://img.shields.io/travis/com/kunalvarma05/laravel-rabbitmq?style=flat-square)
+![Coveralls github](https://img.shields.io/coveralls/github/kunalvarma05/laravel-rabbitmq?style=flat-square)
 [![StyleCI](https://github.styleci.io/repos/242348127/shield)](https://github.styleci.io/repos/242348127)
 [![Quality Score](https://img.shields.io/scrutinizer/g/kunalvarma05/laravel-rabbitmq.svg?style=flat-square)](https://scrutinizer-ci.com/g/kunalvarma05/laravel-rabbitmq)
 [![Total Downloads](https://img.shields.io/packagist/dt/kunalvarma05/laravel-rabbitmq.svg?style=flat-square)](https://packagist.org/packages/kunalvarma05/laravel-rabbitmq)
