@@ -148,22 +148,24 @@ class RabbitMQPublisher
                 return $message->getExchange()->getName();
             })->map(function (RabbitMQMessage $message) {
                 return $message->getExchange();
-            })->each(function (RabbitMQExchange $exchange) use ($channel) {
-                $exchangeConfig = $exchange->getConfig();
-
-                if ($exchangeConfig->get('declare')) {
-                    $channel->exchange_declare(
-                        $exchange->getName(),
-                        $exchangeConfig->get('type'),
-                        $exchangeConfig->get('passive', false),
-                        $exchangeConfig->get('durable', true),
-                        $exchangeConfig->get('auto_delete', false),
-                        $exchangeConfig->get('internal', false),
-                        $exchangeConfig->get('nowait', false),
-                        new AMQPTable($exchangeConfig->get('properties', []))
-                    );
-                }
             });
+
+        $uniqueExchanges->each(function (RabbitMQExchange $exchange) use ($channel) {
+            $exchangeConfig = $exchange->getConfig();
+
+            if ($exchangeConfig->get('declare')) {
+                $channel->exchange_declare(
+                    $exchange->getName(),
+                    $exchangeConfig->get('type'),
+                    $exchangeConfig->get('passive', false),
+                    $exchangeConfig->get('durable', true),
+                    $exchangeConfig->get('auto_delete', false),
+                    $exchangeConfig->get('internal', false),
+                    $exchangeConfig->get('nowait', false),
+                    (new AMQPTable($exchangeConfig->get('properties', [])))->getNativeData()
+                );
+            }
+        });
 
         $max = $this->maxBatchSize;
 

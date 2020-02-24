@@ -25,7 +25,7 @@ class RabbitMQDelivery
     /**
      * @param array $config
      *
-     * @return \Anik\Amqp\Delivery
+     * @return RabbitMQDelivery
      */
     public function setConfig(array $config): self
     {

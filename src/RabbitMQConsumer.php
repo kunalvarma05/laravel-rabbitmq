@@ -164,7 +164,7 @@ class RabbitMQConsumer
                 $exchangeConfig->get('auto_delete', false),
                 $exchangeConfig->get('internal', false),
                 $exchangeConfig->get('nowait', false),
-                new AMQPTable($exchangeConfig->get('properties', []))
+                (new AMQPTable($exchangeConfig->get('properties', [])))->getNativeData()
             );
         }
 
@@ -173,7 +173,7 @@ class RabbitMQConsumer
 
         if (empty($queueConfig->get('name')) || $queueConfig->get('declare')) {
             if (empty($queueConfig->get('name')) && empty($queue->getName())) {
-                $qp['nowait'] = false;
+                $queueConfig->put('nowait', false);
             }
 
             list($queueName, $messageCount, $consumerCount) = $channel->queue_declare(
@@ -204,7 +204,7 @@ class RabbitMQConsumer
                 $exchange->getName(),
                 $bindingKey,
                 $queueConfig->get('nowait', false),
-                new AMQPTable($queueConfig->get('properties.bind_properties', []))
+                (new AMQPTable($queueConfig->get('properties.bind_properties', [])))->getNativeData()
             );
         }
 
