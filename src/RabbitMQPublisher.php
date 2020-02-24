@@ -56,8 +56,12 @@ class RabbitMQPublisher
      *
      * @return void
      */
-    public function publish($messages, string $routingKey = '', string $connectionName = null, PublishConfig $publishConfig = null): void
-    {
+    public function publish(
+        $messages,
+        string $routingKey = '',
+        string $connectionName = null,
+        PublishConfig $publishConfig = null
+    ): void {
         $messages = !is_array($messages) ? [$messages] : $messages;
         $publishConfig = $publishConfig ?? new PublishConfig();
 
