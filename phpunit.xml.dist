@@ -22,5 +22,9 @@
     <php>
         <env name="APP_KEY"
             value="AckfSECXIvnK5r28GVIWUAxmbBSjTsmF"/>
+        <env name="RABBITMQ_USERNAME"
+            value="guest"/>
+        <env name="RABBITMQ_PASSWORD"
+            value="guest"/>
     </php>
 </phpunit>
