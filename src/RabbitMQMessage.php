@@ -10,21 +10,21 @@ class RabbitMQMessage
     /**
      * Message stream.
      *
-     * @var string $stream
+     * @var string
      */
     protected string $stream;
 
     /**
      * Message exchange.
      *
-     * @var RabbitMQExchange|null $exchange
+     * @var RabbitMQExchange|null
      */
     protected ?RabbitMQExchange $exchange = null;
 
     /**
      * Message config.
      *
-     * @var Collection $config
+     * @var Collection
      */
     protected Collection $config;
 

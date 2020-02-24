@@ -171,6 +171,7 @@ class RabbitMQIncomingMessage
     {
         $amqp = $this->getAmqpMessage();
         $props = $amqp ? $amqp->get_properties() : [];
+
         return isset($props['application_headers']) ? $props['application_headers']->getNativeData() : [];
     }
 
@@ -184,7 +185,7 @@ class RabbitMQIncomingMessage
         $delivery = $this->getDelivery();
         $info = $delivery ? $delivery->getConfig()->get('delivery_info') : null;
 
-        if (!$delivery || !$info) {
+        if (! $delivery || ! $info) {
             throw new RabbitMQException('Delivery info not available.');
         }
 

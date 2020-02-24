@@ -9,14 +9,14 @@ class RabbitMQExchange
     /**
      * Exchange name.
      *
-     * @var string $name
+     * @var string
      */
     protected string $name;
 
     /**
      * Exchange config.
      *
-     * @var Collection $config
+     * @var Collection
      */
     protected Collection $config;
 

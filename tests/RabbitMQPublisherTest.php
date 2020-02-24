@@ -17,7 +17,7 @@ class RabbitMQPublisherTest extends TestCase
         $rabbitMQ = new RabbitMQManager($this->app);
         $publisher = $rabbitMQ->publisher();
         $this->assertInstanceOf(RabbitMQPublisher::class, $publisher);
-        $publisher->publish(new RabbitMQMessage("Hello"));
+        $publisher->publish(new RabbitMQMessage('Hello'));
     }
 
     public function testCanBulkPublishMessage()
@@ -44,7 +44,7 @@ class RabbitMQPublisherTest extends TestCase
         $this->assertInstanceOf(RabbitMQPublisher::class, $publisher);
         $messages = [];
         $this->expectException(RabbitMQException::class);
-        $this->expectExceptionMessageMatches("/No messages/");
+        $this->expectExceptionMessageMatches('/No messages/');
         $publisher->publish($messages);
     }
 

@@ -9,7 +9,7 @@ class ConsumeConfig extends Collection
     /**
      * Connection Configuration.
      *
-     * @var ConnectionConfig|null $connectionConfig
+     * @var ConnectionConfig|null
      */
     protected ?ConnectionConfig $connectionConfig;
 
