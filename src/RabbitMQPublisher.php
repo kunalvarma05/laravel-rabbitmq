@@ -99,9 +99,9 @@ class RabbitMQPublisher
             // Merge the exchange properties
             // Publish config > Connection config > Default config
             $exchangeProperties = array_merge(
-                $defaultConfig->get('exchange', ['properties' => []])['properties'], // Default properties
-                $connectionConfig->get('exchange', ['properties' => []])['properties'], // Connection properties
-                $publishConfig->get('exchange', ['properties' => []])['properties'], // Publish properties
+                $defaultConfig->get('exchange', ['properties' => []])['properties'] ?? [], // Default properties
+                $connectionConfig->get('exchange', ['properties' => []])['properties'] ?? [], // Connection properties
+                $publishConfig->get('exchange', ['properties' => []])['properties'] ?? [], // Publish properties
             );
 
             // Merge the exchange config

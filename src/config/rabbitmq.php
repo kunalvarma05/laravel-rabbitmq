@@ -49,8 +49,8 @@ return [
             'exclusive' => env('RABBITMQ_QUEUE_EXCLUSIVE', false),
             'auto_delete' => env('RABBITMQ_QUEUE_AUTO_DEL', false),
             'nowait' => env('RABBITMQ_QUEUE_NOWAIT', false),
-            'd_properties' => [], // queue_declare properties/arguments
-            'b_properties' => [], // queue_bind properties/arguments
+            'declare_properties' => [], // queue_declare properties/arguments
+            'bind_properties' => [], // queue_bind properties/arguments
         ],
 
         'consumer' => [

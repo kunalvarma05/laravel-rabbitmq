@@ -4,7 +4,7 @@ namespace Kunnu\RabbitMQ;
 
 use Illuminate\Config\Repository;
 use Illuminate\Support\Collection;
-use PhpAmqpLib\Channel\AbstractChannel;
+use PhpAmqpLib\Channel\AMQPChannel;
 use PhpAmqpLib\Connection\AMQPSSLConnection;
 use Illuminate\Contracts\Container\Container;
 use PhpAmqpLib\Connection\AbstractConnection;
@@ -154,6 +154,16 @@ class RabbitMQManager
     }
 
     /**
+     * Get the consumer.
+     *
+     * @return RabbitMQConsumer
+     */
+    public function consumer(): RabbitMQConsumer
+    {
+        return new RabbitMQConsumer($this);
+    }
+
+    /**
      * Resolve the channel ID.
      *
      * @param string|null $channelId
@@ -173,13 +183,13 @@ class RabbitMQManager
      * @param string|null $channelId
      * @param AbstractConnection|null $connection
      *
-     * @return AbstractChannel|null
+     * @return AMQPChannel|null
      */
     public function resolveChannel(
         ?string $connectionName = null,
         ?string $channelId = null,
         ?AbstractConnection $connection = null
-    ): AbstractChannel {
+    ): AMQPChannel {
         if (!$connection) {
             $connection = $this->resolveConnection($connectionName);
         }
