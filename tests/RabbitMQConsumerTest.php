@@ -53,8 +53,6 @@ class RabbitMQConsumerTest extends TestCase
                 null,
                 new ConsumeConfig(
                     [
-                        'wait_timeout' => 1,
-                        'wait_timeout' => 1,
                         'queue' => [
                             'name' => 'my_queue',
                             'declare' => true,
@@ -107,7 +105,6 @@ class RabbitMQConsumerTest extends TestCase
                 null,
                 new ConsumeConfig(
                     [
-                        'wait_timeout' => 1,
                         'queue' => [
                             'name' => 'my_queue',
                             'declare' => true,
