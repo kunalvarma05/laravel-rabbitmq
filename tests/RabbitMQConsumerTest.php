@@ -46,25 +46,31 @@ class RabbitMQConsumerTest extends TestCase
             ->setExchange($exchange)
             ->setQueue($queue);
 
-        $consumer->consume(
-            $messageConsumer,
-            'key',
-            null,
-            new ConsumeConfig(
-                [
-                    'queue' => [
-                        'name' => 'my_queue',
-                        'declare' => true,
-                        'durable' => true,
+        try {
+            $consumer->consume(
+                $messageConsumer,
+                'key',
+                null,
+                new ConsumeConfig(
+                    [
+                        'wait_timeout' => 1,
+                        'wait_timeout' => 1,
+                        'queue' => [
+                            'name' => 'my_queue',
+                            'declare' => true,
+                            'durable' => true,
+                        ],
+                        'exchange' => [
+                            'name' => 'unit_test',
+                            'declare' => true,
+                        ],
                     ],
-                    'exchange' => [
-                        'name' => 'unit_test',
-                        'declare' => true,
-                    ],
-                ],
-                $rabbitMQ->resolveConfig($rabbitMQ->resolveDefaultConfigName()),
-            )
-        );
+                    $rabbitMQ->resolveConfig($rabbitMQ->resolveDefaultConfigName()),
+                )
+            );
+        } catch (AMQPTimeoutException $e) {
+            //
+        }
     }
 
     public function testCanConsumeMessagesWithConfig()
@@ -94,28 +100,33 @@ class RabbitMQConsumerTest extends TestCase
             $this,
         );
 
-        $consumer->consume(
-            $messageConsumer,
-            'key',
-            null,
-            new ConsumeConfig(
-                [
-                    'queue' => [
-                        'name' => 'my_queue',
-                        'declare' => true,
-                        'durable' => true,
+        try {
+            $consumer->consume(
+                $messageConsumer,
+                'key',
+                null,
+                new ConsumeConfig(
+                    [
+                        'wait_timeout' => 1,
+                        'queue' => [
+                            'name' => 'my_queue',
+                            'declare' => true,
+                            'durable' => true,
+                        ],
+                        'exchange' => [
+                            'name' => 'unit_test',
+                            'declare' => true,
+                        ],
+                        'qos' => [
+                            'enabled' => true,
+                        ],
                     ],
-                    'exchange' => [
-                        'name' => 'unit_test',
-                        'declare' => true,
-                    ],
-                    'qos' => [
-                        'enabled' => true,
-                    ],
-                ],
-                $rabbitMQ->resolveConfig($rabbitMQ->resolveDefaultConfigName()),
-            )
-        );
+                    $rabbitMQ->resolveConfig($rabbitMQ->resolveDefaultConfigName()),
+                )
+            );
+        } catch (AMQPTimeoutException $e) {
+            //
+        }
     }
 
     public function testCanConsumeMessagesFromFanout()
