@@ -93,6 +93,8 @@ class RabbitMQPublisher
                 $publishConfig->get('message', []), // Publish config
                 $message->getConfig()->toArray(), // Message config
             );
+            // Override the message config
+            $message->setConfig($messageConfig);
 
             // Merge the exchange properties
             // Publish config > Connection config > Default config
