@@ -23,14 +23,14 @@ class RabbitMQManagerTest extends TestCase
     public function testCanResolveConfiguration()
     {
         $rabbitMQ = new RabbitMQManager($this->app);
-        $config  = $rabbitMQ->resolveConfig(RabbitMQManager::class);
+        $config = $rabbitMQ->resolveConfig(RabbitMQManager::class);
         $this->assertInstanceOf(ConnectionConfig::class, $config);
     }
 
     public function testCanResolveConnection()
     {
         $rabbitMQ = new RabbitMQManager($this->app);
-        $connection  = $rabbitMQ->resolveConnection();
+        $connection = $rabbitMQ->resolveConnection();
         $this->assertInstanceOf(AbstractConnection::class, $connection);
     }
 
@@ -38,18 +38,18 @@ class RabbitMQManagerTest extends TestCase
     {
         $rabbitMQ = new RabbitMQManager($this->app);
         $rabbitMQ->getConfig()->set(
-            RabbitMQManager::CONFIG_KEY . ".connections.rabbitmq2",
-            $rabbitMQ->getConfig()->get(RabbitMQManager::CONFIG_KEY . ".connections.rabbitmq")
+            RabbitMQManager::CONFIG_KEY . '.connections.rabbitmq2',
+            $rabbitMQ->getConfig()->get(RabbitMQManager::CONFIG_KEY . '.connections.rabbitmq')
         );
-        $connection  = $rabbitMQ->resolveConnection('rabbitmq');
-        $connectionTwo  = $rabbitMQ->resolveConnection('rabbitmq2');
+        $connection = $rabbitMQ->resolveConnection('rabbitmq');
+        $connectionTwo = $rabbitMQ->resolveConnection('rabbitmq2');
         $this->assertCount(2, $rabbitMQ->getConnections());
     }
 
     public function testCanReturnResolvedChannels()
     {
         $rabbitMQ = new RabbitMQManager($this->app);
-        $connection  = $rabbitMQ->resolveConnection();
+        $connection = $rabbitMQ->resolveConnection();
         $channel = $rabbitMQ->resolveChannel();
         $channel = $rabbitMQ->resolveChannel(null, 2);
         $this->assertCount(2, $rabbitMQ->getChannels());

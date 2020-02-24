@@ -44,6 +44,7 @@ class RabbitMQConsumerTest extends TestCase
                 $this->assertEquals('test', $message->getStream());
                 $message->getDelivery()->getConfig()->put('body', 'quit');
                 $message->getDelivery()->acknowledge();
+
                 return false;
             },
             $this,
@@ -103,6 +104,7 @@ class RabbitMQConsumerTest extends TestCase
                 $this->assertEquals('test', $message->getStream());
                 $message->getDelivery()->getConfig()->put('body', 'quit');
                 $message->getDelivery()->acknowledge();
+
                 return false;
             },
             $this,
@@ -156,6 +158,7 @@ class RabbitMQConsumerTest extends TestCase
                 $this->assertEquals('test', $message->getStream());
                 $message->getDelivery()->getConfig()->put('body', 'quit');
                 $message->getDelivery()->acknowledge();
+
                 return false;
             },
             $this,

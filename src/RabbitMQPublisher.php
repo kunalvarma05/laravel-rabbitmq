@@ -19,7 +19,7 @@ class RabbitMQPublisher
     /**
      * RabbitMQ Manager.
      *
-     * @var RabbitMQManager $manager
+     * @var RabbitMQManager
      */
     protected RabbitMQManager $manager;
 
@@ -36,7 +36,7 @@ class RabbitMQPublisher
     /**
      * Set the max batch size.
      *
-     * @param integer $size
+     * @param int $size
      * @return self
      */
     public function setMaxBatchSize(int $size): self
@@ -62,15 +62,15 @@ class RabbitMQPublisher
         string $connectionName = null,
         PublishConfig $publishConfig = null
     ): void {
-        $messages = !is_array($messages) ? [$messages] : $messages;
+        $messages = ! is_array($messages) ? [$messages] : $messages;
         $publishConfig = $publishConfig ?? new PublishConfig();
 
-        $defaultConfig = new Collection($this->manager->getConfig()->get(RabbitMQManager::CONFIG_KEY . ".defaults"));
+        $defaultConfig = new Collection($this->manager->getConfig()->get(RabbitMQManager::CONFIG_KEY . '.defaults'));
 
         $connectionName = $connectionName ?? $this->manager->resolveDefaultConfigName();
         $connection = $this->manager->resolveConnection();
 
-        $channelId = $this->manager->resolveChannelId($publishConfig->get("channel_id"), $connectionName);
+        $channelId = $this->manager->resolveChannelId($publishConfig->get('channel_id'), $connectionName);
         $channel = $this->manager->resolveChannel($connectionName, $channelId, $connection);
 
         $connectionConfig = $this->manager->resolveConfig($connectionName);

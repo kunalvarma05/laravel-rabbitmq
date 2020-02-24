@@ -21,28 +21,28 @@ class RabbitMQManager
     /**
      * IoC Container/Application.
      *
-     * @var Container $app
+     * @var Container
      */
     protected Container $app;
 
     /**
      * Configuration repository.
      *
-     * @var Repository $config
+     * @var Repository
      */
     protected Repository $config;
 
     /**
      * Connection pool.
      *
-     * @var Collection $connections
+     * @var Collection
      */
     protected Collection $connections;
 
     /**
      * Channel pool.
      *
-     * @var Collection $channels
+     * @var Collection
      */
     protected Collection $channels;
 
@@ -107,6 +107,7 @@ class RabbitMQManager
     public function resolveDefaultConfigName(): string
     {
         $configKey = self::CONFIG_KEY;
+
         return $this->config->get("{$configKey}.defaultConnection", 'rabbitmq');
     }
 
@@ -121,7 +122,7 @@ class RabbitMQManager
     {
         $name = $name ?? $this->resolveDefaultConfigName();
 
-        if (!$this->connections->has($name)) {
+        if (! $this->connections->has($name)) {
             $this->connections->put(
                 $name,
                 $this->makeConnection($config ?? $this->resolveConfig($name))
@@ -140,6 +141,7 @@ class RabbitMQManager
     {
         $configKey = self::CONFIG_KEY;
         $connectionKey = "{$configKey}.connections.{$connectionName}";
+
         return new ConnectionConfig($this->config->get($connectionKey, []));
     }
 
@@ -173,6 +175,7 @@ class RabbitMQManager
     public function resolveChannelId(?int $channelId): ?int
     {
         $configKey = self::CONFIG_KEY;
+
         return $channelId ?? $this->config->get("{$configKey}.defaults.channel_id", $channelId);
     }
 
@@ -190,15 +193,15 @@ class RabbitMQManager
         ?int $channelId = null,
         ?AbstractConnection $connection = null
     ): AMQPChannel {
-        if (!$connection) {
+        if (! $connection) {
             $connection = $this->resolveConnection($connectionName);
         }
 
-        if (!$channelId) {
+        if (! $channelId) {
             $channelId = $this->resolveChannelId($channelId);
         }
 
-        if (!$this->channels->has("{$connectionName}.{$channelId}")) {
+        if (! $this->channels->has("{$connectionName}.{$channelId}")) {
             $this->channels->put("{$connectionName}.{$channelId}", $connection->channel($channelId));
         }
 
