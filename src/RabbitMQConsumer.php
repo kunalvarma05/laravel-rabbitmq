@@ -176,7 +176,7 @@ class RabbitMQConsumer
                 $queueConfig->put('nowait', false);
             }
 
-            list($queueName, $messageCount, $consumerCount) = $channel->queue_declare(
+            [$queueName, $messageCount, $consumerCount] = $channel->queue_declare(
                 $queue->getName(),
                 $queueConfig->get('passive', false),
                 $queueConfig->get('durable', true),
