@@ -49,7 +49,7 @@ class RabbitMQDelivery
          */
         $channel = $info['channel'] ?? null;
 
-        if (! $channel) {
+        if (!$channel) {
             throw new RabbitMQException('Delivery info or channel is not set');
         }
 
@@ -83,7 +83,7 @@ class RabbitMQDelivery
          */
         $channel = $info['channel'] ?? null;
 
-        if (! $channel) {
+        if (!$channel) {
             throw new RabbitMQException('Delivery info or channel is not set');
         }
 

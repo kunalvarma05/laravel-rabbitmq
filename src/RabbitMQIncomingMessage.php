@@ -185,7 +185,7 @@ class RabbitMQIncomingMessage
         $delivery = $this->getDelivery();
         $info = $delivery ? $delivery->getConfig()->get('delivery_info') : null;
 
-        if (! $delivery || ! $info) {
+        if (!$delivery || !$info) {
             throw new RabbitMQException('Delivery info not available.');
         }
 
