@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 1.1.0 (2020-02-25)
+
+### Bug Fixes
+
+
+* code violations based on scrutinizer analysis ([d29ab31](https://github.com/kunalvarma05/laravel-rabbitmq/commit/d29ab3117a76bdbacca1bbd781fe3ca0eac9cf13))
+
 ## 1.0.0 (2020-02-25)
 
 
