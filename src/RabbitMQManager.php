@@ -122,7 +122,7 @@ class RabbitMQManager
     {
         $name = $name ?? $this->resolveDefaultConfigName();
 
-        if (! $this->connections->has($name)) {
+        if (!$this->connections->has($name)) {
             $this->connections->put(
                 $name,
                 $this->makeConnection($config ?? $this->resolveConfig($name))
@@ -172,10 +172,13 @@ class RabbitMQManager
      *
      * @return int|null
      */
-    public function resolveChannelId(?int $channelId): ?int
+    public function resolveChannelId(?int $channelId, ?string $connectionName = null): ?int
     {
         $configKey = self::CONFIG_KEY;
-
+        $connectionName = $connectionName ?? $this->resolveDefaultConfigName();
+        // Use channel ID from the connection config if channel ID is not given
+        $channelId = $channelId ?? $this->config->get("{$configKey}.{$connectionName}.channel_id");
+        // else, use the default channel ID
         return $channelId ?? $this->config->get("{$configKey}.defaults.channel_id", $channelId);
     }
 
@@ -193,15 +196,13 @@ class RabbitMQManager
         ?int $channelId = null,
         ?AbstractConnection $connection = null
     ): AMQPChannel {
-        if (! $connection) {
+        if (!$connection) {
             $connection = $this->resolveConnection($connectionName);
         }
 
-        if (! $channelId) {
-            $channelId = $this->resolveChannelId($channelId);
-        }
+        $channelId = $channelId ?? $this->resolveChannelId($channelId);
 
-        if (! $this->channels->has("{$connectionName}.{$channelId}")) {
+        if (!$this->channels->has("{$connectionName}.{$channelId}")) {
             $this->channels->put("{$connectionName}.{$channelId}", $connection->channel($channelId));
         }
 
