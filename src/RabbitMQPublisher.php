@@ -62,7 +62,7 @@ class RabbitMQPublisher
         string $connectionName = null,
         PublishConfig $publishConfig = null
     ): void {
-        $messages = ! is_array($messages) ? [$messages] : $messages;
+        $messages = !is_array($messages) ? [$messages] : $messages;
         $publishConfig = $publishConfig ?? new PublishConfig();
 
         $defaultConfig = new Collection($this->manager->getConfig()->get(RabbitMQManager::CONFIG_KEY . '.defaults'));
