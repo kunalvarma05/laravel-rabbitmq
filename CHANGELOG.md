@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.1...v1.1.2) (2020-03-10)
+
+
+### Bug Fixes
+
+* linting through StyleCI ([25542bc](https://github.com/kunalvarma05/laravel-rabbitmq/commit/25542bce0b46134f0af0610f184450acd6088ba4))
+* php-amqplib conflict with php7.4 ([#3](https://github.com/kunalvarma05/laravel-rabbitmq/issues/3)) ([441d829](https://github.com/kunalvarma05/laravel-rabbitmq/commit/441d8296f524469cb04b61a7d72094d982848c29))
+
+## [1.0.0](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v0.1.0...v1.0.0) (2020-02-24)
+
+## 0.1.0 (2020-02-24)
+
 ### [1.1.1](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.0...v1.1.1) (2020-02-25)
 
 
