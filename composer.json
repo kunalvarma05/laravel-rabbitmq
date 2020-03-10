@@ -21,7 +21,7 @@
     "php": "^7.4",
     "ext-json": "*",
     "illuminate/support": "^6.0",
-    "php-amqplib/php-amqplib": "^2.11"
+    "php-amqplib/php-amqplib": "v2.11.0"
   },
   "require-dev": {
     "friendsofphp/php-cs-fixer": "^2.16",
