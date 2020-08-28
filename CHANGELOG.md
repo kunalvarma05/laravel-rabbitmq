@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.3](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.2...v1.1.3) (2020-08-28)
+
+
+### Bug Fixes
+
+* blank line at the end of file ([b7e60bd](https://github.com/kunalvarma05/laravel-rabbitmq/commit/b7e60bdcd050304881da975c0697fb6b74dcf4e1))
+
 ### [1.1.2](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.1...v1.1.2) (2020-03-10)
 
 
