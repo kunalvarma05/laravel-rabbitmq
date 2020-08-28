@@ -5,8 +5,7 @@
   },
   "lint-staged": {
     "*.php": [
-      "composer run-script lint-fix",
-      "git add"
+      "composer run-script lint-fix"
     ]
   },
   "devDependencies": {
