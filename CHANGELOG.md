@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.5...v1.2.0) (2021-04-12)
+
+
+### Features
+
+* php8 support ([#11](https://github.com/kunalvarma05/laravel-rabbitmq/issues/11)) ([6aedf83](https://github.com/kunalvarma05/laravel-rabbitmq/commit/6aedf838d953307bc6d9017c17d55d0ec257e10f))
+
 ### [1.1.5](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.4...v1.1.5) (2021-04-12)
 
 ### [1.1.3](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.1.2...v1.1.3) (2020-08-28)
