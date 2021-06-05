@@ -59,6 +59,7 @@ return [
             'no_ack' => env('RABBITMQ_CONSUMER_NO_ACK', false),
             'exclusive' => env('RABBITMQ_CONSUMER_EXCLUSIVE', false),
             'nowait' => env('RABBITMQ_CONSUMER_NOWAIT', false),
+            'consumer_sleep_ms' => env('RABBITMQ_CONSUMER_SLEEP_MS', 1000),
             'ticket' => null,
             'properties' => [],
         ],
