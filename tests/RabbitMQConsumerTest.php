@@ -155,7 +155,7 @@ class RabbitMQConsumerTest extends TestCase
 
         // Need this beforehand to make sure the queue can hold data before we start consuming
         $rabbitMQ->resolveChannel()->exchange_declare($exchange->getName(), AMQPExchangeType::FANOUT, false, true, false);
-        [$queueName,] = $rabbitMQ->resolveChannel()->queue_declare("", false, true, true, false);
+        [$queueName,] = $rabbitMQ->resolveChannel()->queue_declare('', false, true, true, false);
         $rabbitMQ->resolveChannel()->queue_bind($queueName, $exchange->getName());
 
         $rabbitMQ->publisher()->publish($msg);
