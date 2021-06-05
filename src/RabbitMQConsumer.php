@@ -44,7 +44,7 @@ class RabbitMQConsumer
 
         // Merge/Override default connection configuration with
         // the configuration specified for this consuming.
-        if ($consumeConfig && $consumeConfig->getConnectionConfig()) {
+        if ($consumeConfig->getConnectionConfig()) {
             // consume config > Connection config
             $connectionConfig = $connectionConfig->merge($consumeConfig->getConnectionConfig());
         }
@@ -126,21 +126,21 @@ class RabbitMQConsumer
 
         // Merge the consumer config
         // Consumer config > Consume config > Connection config > Default config
-        $consumerConfig = array_merge(
+        $consumerConfig = new Collection(array_merge(
             $defaultConfig->get('consumer', []), // Default config
             $connectionConfig->get('consumer', []), // Connection config
             $consumeConfig->get('consumer', ['properties' => $consumerProperties]), // Consume config,
             $messageConsumer->getConfig()->toArray(), // Consumer config
-        );
+        ));
 
         // Override consumer config with reconciled configuration
-        $messageConsumer->setConfig($consumerConfig);
+        $messageConsumer->setConfig($consumerConfig->toArray());
 
         // Consume config > Connection config > Default config
         $qosConfig = new Collection(array_merge(
             $defaultConfig->get('qos', []), // Default config
             $connectionConfig->get('qos', []), // Connection config
-            $consumeConfig->get('qos', []), // Consume config,
+            $consumerConfig->get('qos', []), // Consume config,
         ));
 
         /* QoS is not attached to any exchange, queue */
@@ -244,10 +244,16 @@ class RabbitMQConsumer
 
         while ($channel->is_consuming()) {
             $channel->wait(
-                $consumeConfig->get('wait_allowed_methods'),
-                $consumeConfig->get('wait_non_blocking', false),
-                $consumeConfig->get('wait_timeout'),
+                $consumerConfig->get('wait_allowed_methods'),
+                $consumerConfig->get('wait_non_blocking', false),
+                $consumerConfig->get('wait_timeout'),
             );
+
+            $consumerSleepMs = $consumerConfig->get('consumer_sleep_ms', 0);
+
+            if ($consumerSleepMs > 0) {
+                usleep($consumerSleepMs);
+            }
         }
     }
 }

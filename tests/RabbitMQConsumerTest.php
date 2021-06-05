@@ -153,6 +153,13 @@ class RabbitMQConsumerTest extends TestCase
         $msg = new RabbitMQMessage('test');
         $msg->setExchange($exchange);
 
+        // Need this beforehand to make sure the queue can hold data before we start consuming
+        $rabbitMQ->resolveChannel()->exchange_declare($exchange->getName(), AMQPExchangeType::FANOUT, false, true, false);
+        [$queueName,] = $rabbitMQ->resolveChannel()->queue_declare("", false, true, true, false);
+        $rabbitMQ->resolveChannel()->queue_bind($queueName, $exchange->getName());
+
+        $rabbitMQ->publisher()->publish($msg);
+
         $messageConsumer = new RabbitMQGenericMessageConsumer(
             function (RabbitMQIncomingMessage $message) {
                 $this->assertEquals('test', $message->getStream());
@@ -164,12 +171,13 @@ class RabbitMQConsumerTest extends TestCase
             $this,
         );
 
-        $messageConsumer->setExchange($exchange);
+        $queue = new RabbitMQQueue($queueName);
+        $messageConsumer->setExchange($exchange)->setQueue($queue);
 
         try {
             $consumer->consume(
                 $messageConsumer,
-                'key',
+                '',
                 null,
                 new ConsumeConfig(['wait_timeout' => 1, 'qos' => ['enabled' => true]])
             );
