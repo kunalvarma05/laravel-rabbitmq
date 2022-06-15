@@ -1,6 +1,6 @@
 {
   "name": "kunalvarma05/laravel-rabbitmq",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "Work with RabbitMQ in Laravel.",
   "keywords": [
     "amqp",
