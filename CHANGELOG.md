@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.4.1](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.4.0...v1.4.1) (2022-08-17)
+
+
+### Bug Fixes
+
+* remove php 7.4 support ([5987f7a](https://github.com/kunalvarma05/laravel-rabbitmq/commit/5987f7a8792f7c5520ee1a68f06244dec39dc033))
+
 ## [1.4.0](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.3.3...v1.4.0) (2022-08-17)
 
 
