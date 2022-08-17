@@ -11,7 +11,7 @@ $exclude = [
     "node_modules",
 ];
 
-return PhpCsFixer\Config::create()
+return (new PhpCsFixer\Config())
     ->setRiskyAllowed(true)
     ->setRules([
         '@PSR2' => true,
@@ -19,18 +19,18 @@ return PhpCsFixer\Config::create()
         'combine_consecutive_unsets' => true,
         'heredoc_to_nowdoc' => true,
         'list_syntax' => ['syntax' => 'short'],
-        'no_extra_consecutive_blank_lines' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block'],
-        'no_short_echo_tag' => true,
+        'no_extra_blank_lines' => ['tokens' => ['break', 'continue', 'extra', 'return', 'throw', 'use', 'parenthesis_brace_block', 'square_brace_block', 'curly_brace_block']],
+        'echo_tag_syntax' => ['format' => 'long'],
         'no_unreachable_default_argument_value' => true,
         'no_useless_else' => true,
         'no_useless_return' => true,
         'ordered_class_elements' => true,
-        'ordered_imports' => ['sortAlgorithm' => 'length'],
+        'ordered_imports' => ['sort_algorithm' => 'length'],
         'phpdoc_add_missing_param_annotation' => true,
         'phpdoc_order' => true,
         'no_unused_imports' => true,
         'semicolon_after_instruction' => true,
-        'trailing_comma_in_multiline_array' => true,
+        'trailing_comma_in_multiline' => ['elements' => ['arrays']],
         'phpdoc_summary' => true,
         'strict_comparison' => true,
         'strict_param' => true,

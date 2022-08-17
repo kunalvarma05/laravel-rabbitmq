@@ -3,9 +3,12 @@ _ide_helper.php
 .env
 .php_cs
 .php_cs.cache
+.php-cs-fixer.php
+.php-cs-fixer.cache
 .phpstorm.meta.php
 .phpunit.result.cache
 .vscode/*
+.idea
 *.clover
 *.DS_Store
 build
