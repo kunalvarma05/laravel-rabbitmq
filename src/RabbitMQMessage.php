@@ -31,8 +31,8 @@ class RabbitMQMessage
     /**
      * Create a new RabbitMQ Message instance.
      *
-     * @param string $stream
-     * @param array $config
+     * @param  string  $stream
+     * @param  array  $config
      */
     public function __construct(string $stream, array $config = [])
     {
@@ -44,8 +44,7 @@ class RabbitMQMessage
     /**
      * Set message config.
      *
-     * @param array $config
-     *
+     * @param  array  $config
      * @return RabbitMQMessage
      */
     public function setConfig(array $config): self
@@ -68,7 +67,7 @@ class RabbitMQMessage
     /**
      * Set message stream.
      *
-     * @param string $stream
+     * @param  string  $stream
      * @return self
      */
     public function setStream(string $stream): self
@@ -105,8 +104,7 @@ class RabbitMQMessage
     /**
      * Set message exchange.
      *
-     * @param RabbitMQExchange $exchange
-     *
+     * @param  RabbitMQExchange  $exchange
      * @return self
      */
     public function setExchange(RabbitMQExchange $exchange): self

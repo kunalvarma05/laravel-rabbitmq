@@ -25,8 +25,7 @@ class RabbitMQQueue
     }
 
     /**
-     * @param string $name
-     *
+     * @param  string  $name
      * @return \Kunnu\RabbitMQ\RabbitMQQueue
      */
     public function setName(string $name): self
@@ -45,8 +44,7 @@ class RabbitMQQueue
     }
 
     /**
-     * @param array $config
-     *
+     * @param  array  $config
      * @return \Kunnu\RabbitMQ\RabbitMQQueue
      */
     public function setConfig(array $config): self

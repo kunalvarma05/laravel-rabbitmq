@@ -20,7 +20,7 @@ abstract class RabbitMQMessageConsumer
     /**
      * Handle an incoming message.
      *
-     * @param RabbitMQIncomingMessage $message
+     * @param  RabbitMQIncomingMessage  $message
      * @return void
      */
     abstract public function handle(RabbitMQIncomingMessage $message): void;
@@ -38,7 +38,7 @@ abstract class RabbitMQMessageConsumer
     /**
      * Set configuration.
      *
-     * @param array $config
+     * @param  array  $config
      * @return self
      */
     public function setConfig(array $config): self
@@ -57,8 +57,7 @@ abstract class RabbitMQMessageConsumer
     }
 
     /**
-     * @param \Kunnu\RabbitMQ\RabbitMQExchange|null $exchange
-     *
+     * @param  \Kunnu\RabbitMQ\RabbitMQExchange|null  $exchange
      * @return self
      */
     public function setExchange(?RabbitMQExchange $exchange): self
@@ -77,8 +76,7 @@ abstract class RabbitMQMessageConsumer
     }
 
     /**
-     * @param \Kunnu\RabbitMQ\RabbitMQQueue|null $queue
-     *
+     * @param  \Kunnu\RabbitMQ\RabbitMQQueue|null  $queue
      * @return self
      */
     public function setQueue(?RabbitMQQueue $queue): self

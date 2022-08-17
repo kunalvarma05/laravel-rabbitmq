@@ -18,7 +18,7 @@ class RabbitMQConsumer
     /**
      * Create a new RabbitMQ Publisher instance.
      *
-     * @param RabbitMQManager $manager
+     * @param  RabbitMQManager  $manager
      */
     public function __construct(RabbitMQManager $manager)
     {

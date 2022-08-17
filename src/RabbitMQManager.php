@@ -49,7 +49,7 @@ class RabbitMQManager
     /**
      * Create a new RabbitMQManager instance.
      *
-     * @param Container $app
+     * @param  Container  $app
      */
     public function __construct(Container $app)
     {
@@ -114,8 +114,8 @@ class RabbitMQManager
     /**
      * Resolve connection instance by name.
      *
-     * @param string|null $name
-     * @param ConnectionConfig|null $config
+     * @param  string|null  $name
+     * @param  ConnectionConfig|null  $config
      * @return AbstractConnection
      */
     public function resolveConnection(?string $name = null, ?ConnectionConfig $config = null): AbstractConnection
@@ -168,8 +168,7 @@ class RabbitMQManager
     /**
      * Resolve the channel ID.
      *
-     * @param int|null $channelId
-     *
+     * @param  int|null  $channelId
      * @return int|null
      */
     public function resolveChannelId(?int $channelId, ?string $connectionName = null): ?int
@@ -185,10 +184,9 @@ class RabbitMQManager
     /**
      * Resolve channel for the given connection.
      *
-     * @param string|null $connectionName
-     * @param int|null $channelId
-     * @param AbstractConnection|null $connection
-     *
+     * @param  string|null  $connectionName
+     * @param  int|null  $channelId
+     * @param  AbstractConnection|null  $connection
      * @return AMQPChannel|null
      */
     public function resolveChannel(
@@ -212,8 +210,7 @@ class RabbitMQManager
     /**
      * Create a new connection.
      *
-     * @param ConnectionConfig $config
-     *
+     * @param  ConnectionConfig  $config
      * @return AbstractConnection
      */
     protected function makeConnection(ConnectionConfig $config): AbstractConnection
