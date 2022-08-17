@@ -26,7 +26,7 @@ class RabbitMQPublisher
     /**
      * Create a new RabbitMQ Publisher instance.
      *
-     * @param RabbitMQManager $manager
+     * @param  RabbitMQManager  $manager
      */
     public function __construct(RabbitMQManager $manager)
     {
@@ -36,7 +36,7 @@ class RabbitMQPublisher
     /**
      * Set the max batch size.
      *
-     * @param int $size
+     * @param  int  $size
      * @return self
      */
     public function setMaxBatchSize(int $size): self
@@ -49,11 +49,10 @@ class RabbitMQPublisher
     /**
      * Publish message(s).
      *
-     * @param RabbitMQMessage[]|RabbitMQMessage $messages
-     * @param string $routingKey
-     * @param string $connectionName
-     * @param PublishConfig $config
-     *
+     * @param  RabbitMQMessage[]|RabbitMQMessage  $messages
+     * @param  string  $routingKey
+     * @param  string  $connectionName
+     * @param  PublishConfig  $config
      * @return void
      */
     public function publish(
@@ -128,9 +127,9 @@ class RabbitMQPublisher
     }
 
     /**
-     * @param RabbitMQMessage[] $messages
-     * @param AMQPChannel $channel
-     * @param string $routingKey
+     * @param  RabbitMQMessage[]  $messages
+     * @param  AMQPChannel  $channel
+     * @param  string  $routingKey
      *
      * @throws RabbitMQException
      */

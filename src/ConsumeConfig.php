@@ -16,8 +16,8 @@ class ConsumeConfig extends Collection
     /**
      * Create a new ConsumeConfig instance.
      *
-     * @param array $config
-     * @param ConnectionConfig|null $connectionConfig
+     * @param  array  $config
+     * @param  ConnectionConfig|null  $connectionConfig
      */
     public function __construct(array $config = [], ?ConnectionConfig $connectionConfig = null)
     {

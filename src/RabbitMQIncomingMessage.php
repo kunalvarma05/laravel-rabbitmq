@@ -28,8 +28,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param array $config
-     *
+     * @param  array  $config
      * @return \Kunnu\RabbitMQ\RabbitMQIncomingMessage
      */
     public function setConfig(array $config): self
@@ -56,8 +55,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param string $stream
-     *
+     * @param  string  $stream
      * @return \Kunnu\RabbitMQ\RabbitMQIncomingMessage
      */
     public function setStream(string $stream): self
@@ -76,8 +74,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param \Kunnu\RabbitMQ\RabbitMQExchange|null $exchange
-     *
+     * @param  \Kunnu\RabbitMQ\RabbitMQExchange|null  $exchange
      * @return self
      */
     public function setExchange(?RabbitMQExchange $exchange): self
@@ -96,8 +93,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param \Kunnu\RabbitMQ\RabbitMQQueue|null $queue
-     *
+     * @param  \Kunnu\RabbitMQ\RabbitMQQueue|null  $queue
      * @return self
      */
     public function setQueue(?RabbitMQQueue $queue): self
@@ -116,8 +112,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param \Kunnu\RabbitMQ\RabbitMQDelivery|null $deliveryInfo
-     *
+     * @param  \Kunnu\RabbitMQ\RabbitMQDelivery|null  $deliveryInfo
      * @return \Kunnu\RabbitMQ\RabbitMQIncomingMessage
      */
     public function setDelivery(?RabbitMQDelivery $deliveryInfo): self
@@ -136,8 +131,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param RabbitMQMessageConsumer $consumer
-     *
+     * @param  RabbitMQMessageConsumer  $consumer
      * @return self
      */
     public function setConsumer(?RabbitMQMessageConsumer $consumer): self
@@ -156,8 +150,7 @@ class RabbitMQIncomingMessage
     }
 
     /**
-     * @param \PhpAmqpLib\Message\AMQPMessage|null $amqpMessage
-     *
+     * @param  \PhpAmqpLib\Message\AMQPMessage|null  $amqpMessage
      * @return \Kunnu\RabbitMQ\RabbitMQIncomingMessage
      */
     public function setAmqpMessage(?AMQPMessage $amqpMessage): RabbitMQIncomingMessage
