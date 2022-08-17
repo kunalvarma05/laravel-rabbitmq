@@ -9,7 +9,7 @@ class ConnectionConfig extends Collection
     /**
      * Create a new ConnectionConfig instance.
      *
-     * @param array $config
+     * @param  array  $config
      */
     public function __construct(array $config = null)
     {

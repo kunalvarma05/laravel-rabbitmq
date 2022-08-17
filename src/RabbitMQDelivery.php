@@ -23,8 +23,7 @@ class RabbitMQDelivery
     }
 
     /**
-     * @param array $config
-     *
+     * @param  array  $config
      * @return RabbitMQDelivery
      */
     public function setConfig(array $config): self
@@ -37,8 +36,9 @@ class RabbitMQDelivery
     /**
      * Acknowledge a message.
      *
-     * @throws RabbitMQException
      * @return bool
+     *
+     * @throws RabbitMQException
      */
     public function acknowledge(): bool
     {
@@ -69,10 +69,10 @@ class RabbitMQDelivery
     /**
      * Rejects message w/ requeue.
      *
-     * @param bool $requeue
+     * @param  bool  $requeue
+     * @return bool
      *
      * @throws RabbitMQException
-     * @return bool
      */
     public function reject($requeue = false): bool
     {

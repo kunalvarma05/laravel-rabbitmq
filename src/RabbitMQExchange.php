@@ -23,8 +23,8 @@ class RabbitMQExchange
     /**
      * Create a new RabbitMQ Exchange instance.
      *
-     * @param string $name
-     * @param array $config
+     * @param  string  $name
+     * @param  array  $config
      */
     public function __construct(string $name, array $config = [])
     {
@@ -46,8 +46,7 @@ class RabbitMQExchange
     /**
      * Set Exchange name.
      *
-     * @param string $name
-     *
+     * @param  string  $name
      * @return RabbitMQExchange
      */
     public function setName(string $name): self
@@ -70,8 +69,7 @@ class RabbitMQExchange
     /**
      * Set Exchange config.
      *
-     * @param array $config
-     *
+     * @param  array  $config
      * @return RabbitMQExchange
      */
     public function setConfig(array $config): self
