@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.4.1...v1.5.0) (2023-12-11)
+
+
+### Features
+
+* update dependencies to support laravel 10 ([#30](https://github.com/kunalvarma05/laravel-rabbitmq/issues/30)) ([07cdf1e](https://github.com/kunalvarma05/laravel-rabbitmq/commit/07cdf1e7323ff673dd3123ea82b650a19fa42091))
+
 ### [1.4.1](https://github.com/kunalvarma05/laravel-rabbitmq/compare/v1.4.0...v1.4.1) (2022-08-17)
 
 
